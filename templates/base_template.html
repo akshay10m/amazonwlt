@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+		<link rel="shortcut icon" href="#" />
+		<title>{% block title %}
+			Amazon Tracker
+		{% endblock %}
+		</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+		<!-- <script type="text/javascript" src="{{ url_for('static', filename='scripts/hello.js') }}"></script> -->
+		<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/basic.css') }}"> -->
+
+		
+	</head>
+
+	<body>
+		{% include('stubs/_navbar.html') %}
+		<div class="container">
+		{% include('stubs/_msgs.html') %}
+		{% block content %}
+
+		{% endblock %}
+		</div>
+
+	</body>
+		
+</html>

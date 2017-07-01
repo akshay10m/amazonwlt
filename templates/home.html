@@ -1,0 +1,50 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+	Welcome, {{ session.username }}
+{% endblock %}
+	
+{% block content %}
+	<div class="jumbotron text-center">
+	<h1>Welcome, {{ session['username'] }}</h1>
+	<p class="lead">Welcome to your home page</p>
+	<a href="/add" class="btn btn-success">  <span class="glyphicon glyphicon-plus"></span> Add wishlist</a>
+	<hr>
+
+	<div class="text-centre" >
+		{% if wishlists %}
+			<p>You are tracking the following wishlists<a href="/refresh" class="btn btn-default btn-small pull-right">Refresh <span class="glyphicon glyphicon-refresh"></span></a></p>
+			
+			<table class="table table-bordered ">
+			    <thead >
+			      <tr >
+			        <th class="text-center">#</th>
+			        <th class="text-center">Wishlist Id</th>
+			        <th class="text-center">Wishlist Name</th>
+			        <th class="text-center"># of items</th>
+			        <th class="text-center">Action</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    {% for wl_id in wishlists %}
+			      <tr>
+			        <td>{{ loop.index }}</td>
+			        <td>{{ wl_id.wishlist_id }}</td>
+			        <td>{{ wl_id.name }}</td>
+			        <td>{{ wl_id.num_of_items }}</td>
+			        <td><a href="https://www.amazon.in/registry/wishlist/{{ wl_id.wishlist_id }}/" class="btn btn-primary btn-xs" target="_blank"> View </a><a href="/delete/{{ wl_id.wishlist_id }}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"> </span></a></td>
+			      </tr>
+			      {% endfor %}
+		      	</tbody>
+		    </table>
+		{% else %}
+			<p>No wishlists to show</p>
+		{% endif %}
+		
+		
+		
+	</div>
+
+</div>
+	
+{% endblock %}

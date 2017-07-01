@@ -1,0 +1,26 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+	Update password
+{% endblock %}
+
+{% block content %}
+	
+	{% from 'stubs/_formhelpers.html' import render_field %}
+	
+	<form action="" method="POST">
+		
+		<div class="form-group">
+			{{ render_field(form.new_name, class="form-control", type="text", required="true", minlength=1, maxlength=30, default="{{ session['username'] }}" )}}
+		</div>
+		<div class="form-group">
+			{{ render_field(form.password, class="form-control", type="password", required="true", minlength=6, maxlength=14)}}
+		</div>
+		<p><input type="submit" value="Save" class="btn btn-primary"><a href="/home" name="Cancel" class="btn btn-default"> Cancel</a></p>
+		<small><a href="{{ url_for('reset') }}">Forgot password?</a></small>
+
+		
+	</form>
+
+
+{% endblock %}
